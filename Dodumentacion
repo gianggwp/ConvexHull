@@ -1,1 +1,25 @@
+Descripcion del problema
+  
+  Convex Hull es un problema que debemos resolver, en si, son datos esparcidos en el plano (x, y)
+  Estos datos pueden ser encerrados de manera eficaz utilizando lineas rectas y como puntos de referencia los datos con las cordenadas mas lejanas
+  Por ejemplo, el dato que tenga la X mayor y menor, y el que tena la Y mayor y menor
+  Una vez con estos datos, se compararan los angulos que se generan entre el punto izquierdo con el superior, y el punto izquiero con el punto X
+  Si el angulo de A con B es menos que el de A con X, entonces X debe ser agregado
 
+Descripcion de herramientas:
+
+  AnnData se usa especificamente para matrices y representar obserbaciones en un plano (x, y)
+  UMAP Uniform Manifold Approximation and Projection, en español Aproximación y proyección de colectores uniformes, sirve para mostrar los datos en un mapa
+
+Las librerias que seran utilizadas son:
+
+  import anndata as ad
+  import matplotlib.pyplot as plt
+  from scipy.spatial import ConvexHull
+  import numpy as np
+  import umap
+  from google.colab import auth
+  
+adata = ad.read_h5ad("Directorio para extraer los datos")
+
+print(adata.obsm.keys())
