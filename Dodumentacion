@@ -18,27 +18,27 @@ Las librerias que seran utilizadas son:
 !pip install matplotlib
 !pip install scipy
 """
-  import anndata as ad
-  import matplotlib.pyplot as plt
-  from scipy.spatial import ConvexHull
-  import numpy as np
-  import umap
-  import pandas as pd
-  from matplotlib.patches import Polygon
+import anndata as ad
+import matplotlib.pyplot as plt
+from scipy.spatial import ConvexHull
+import numpy as np
+import umap
+import pandas as pd
+from matplotlib.patches import Polygon
 
-  
+
 adata = ad.read_h5ad("/content/AnalisisAlgoritmos/RedNeuronal.h5ad")
 umap_coords = adata.obsm['X_UMAP']
 cluster_id = adata.obs['cluster_id']
 
 color = {
-    37: '#914F1E',  # Cafe
-    38: '#2F3645',  # Azul marino
-    39: '#7C00FE',  # Morado fosforescente
-    41: '#d62728',  # Rojo
-    42: '#000000',  # Negro
+    37: '#E85C0D',  # Naranja
+    38: '#e377c2',  # Rosa
+    39: '#451952',  # Morado
+    41: '#D8A25E',  # Amarillo
+    42: '#00541A',  # Verde
     43: '#CCFFBD',  # verde Aqua
-    75: '#e377c2'   # Rosa
+    75: '#0B2F9F'   # Azul
 }
 
 print(adata,'\n', umap_coords,'\n',cluster_id)
@@ -46,8 +46,8 @@ print(adata,'\n', umap_coords,'\n',cluster_id)
 plt.figure(figsize=(10,8))
 for cluster in np.unique(cluster_id):
     cluster_points = umap_coords[cluster_id == cluster]
-    plt.scatter(cluster_points[:, 0], cluster_points[:, 1], label=f'Cluster {cluster}', color=colors[cluster],s=9)
-    
+    plt.scatter(cluster_points[:, 0], cluster_points[:, 1], label=f'Cluster {cluster}', color=colors[cluster],s=11)
+
     if len(cluster_points) >=3:
         hull = ConvexHull(cluster_points)
         for simplex in hull.simplices:
