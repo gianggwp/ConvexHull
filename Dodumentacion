@@ -31,7 +31,7 @@ adata = ad.read_h5ad("/content/AnalisisAlgoritmos/RedNeuronal.h5ad")
 umap_coords = adata.obsm['X_UMAP']
 cluster_id = adata.obs['cluster_id']
 
-color = {
+colors = {
     37: '#E85C0D',  # Naranja
     38: '#e377c2',  # Rosa
     39: '#451952',  # Morado
