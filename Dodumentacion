@@ -47,7 +47,14 @@ plt.figure(figsize=(10,8))
 for cluster in np.unique(cluster_id):
     cluster_points = umap_coords[cluster_id == cluster]
     plt.scatter(cluster_points[:, 0], cluster_points[:, 1], label=f'Cluster {cluster}', color=colors[cluster],s=9)
+    
+    if len(cluster_points) >=3:
+        hull = ConvexHull(cluster_points)
+        for simplex in hull.simplices:
+            plt.plot(cluster_points[simplex, 0], cluster_points[simplex, 1], 'k-')
+
 plt.title('Clusters con Hulls Convexos')
 plt.xlabel('UMAP 1')
 plt.ylabel('UMAP 2')
+plt.legend()
 plt.show()
